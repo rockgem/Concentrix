@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxc2aitoewmiq"]
+
+[ext_resource type="Script" path="res://scenes/UI.gd" id="1_8prnf"]
+
+[node name="UI" type="CanvasLayer"]
+layer = 90
+script = ExtResource("1_8prnf")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CircleAmountChanger" type="HBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 561.0
+offset_right = 477.0
+offset_bottom = 592.0
+
+[node name="Label" type="Label" parent="Control/CircleAmountChanger"]
+layout_mode = 2
+text = "Amount of circles:"
+
+[node name="CirclesAmount" type="SpinBox" parent="Control/CircleAmountChanger"]
+layout_mode = 2
+
+[node name="StationAdder" type="HBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 600.0
+offset_right = 276.0
+offset_bottom = 631.0
+
+[node name="Label" type="Label" parent="Control/StationAdder"]
+layout_mode = 2
+text = "Add Station to Circle:"
+
+[node name="StationSelection" type="SpinBox" parent="Control/StationAdder"]
+layout_mode = 2
+min_value = 1.0
+max_value = 999.0
+value = 1.0
+
+[node name="Label2" type="Label" parent="Control/StationAdder"]
+layout_mode = 2
+text = "Amount:"
+
+[node name="Amount" type="SpinBox" parent="Control/StationAdder"]
+layout_mode = 2
+min_value = 1.0
+max_value = 9999.0
+value = 1.0
+
+[node name="Add" type="Button" parent="Control/StationAdder"]
+layout_mode = 2
+text = "Add"
+
+[connection signal="value_changed" from="Control/CircleAmountChanger/CirclesAmount" to="." method="_on_circles_amount_value_changed"]
+[connection signal="pressed" from="Control/StationAdder/Add" to="." method="_on_add_pressed"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://xioa8mhmmr3e"]
+
+[ext_resource type="Script" path="res://actors/elements/Point.gd" id="1_yjnkl"]
+[ext_resource type="Texture2D" uid="uid://cixoodxtkg3jl" path="res://art/tri.png" id="2_05dci"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8550m"]
+
+[node name="Point" type="Node2D" groups=["Point"]]
+script = ExtResource("1_yjnkl")
+
+[node name="Inner" type="Node2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="Inner"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inner/Area2D"]
+shape = SubResource("CircleShape2D_8550m")
+
+[node name="Circle" type="Sprite2D" parent="Inner"]
+scale = Vector2(0.32, 0.32)
+texture = ExtResource("2_05dci")
+
+[connection signal="area_entered" from="Inner/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Inner/Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="input_event" from="Inner/Area2D" to="." method="_on_area_2d_input_event"]
