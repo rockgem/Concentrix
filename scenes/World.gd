@@ -44,6 +44,10 @@ func _ready():
 			add_station_to_circle(count, 1, i * PI / 6, 655, 'circle', Color.SKY_BLUE)
 		
 		count += 1
+	
+	
+	change_circle_slider(1, 'triangle')
+	change_circle_slider(2, 'circle_small', Color.BLUE_VIOLET)
 
 
 func delete_all():
@@ -85,6 +89,26 @@ func add_station_to_circle(idx, amount = 1, rot = 0.0, sound_hz = 48.0, shape = 
 			station.get_node('Inner/Circle').scale = Vector2(size, size)
 			
 			circle.add_object(station, rot)
+
+
+func change_circle_slider(idx, shape = 'circle', color: Color = Color.WHITE, size = .32):
+	var circle = $Sort.get_child(idx - 1)
+	
+	if circle == null:
+		print('no circle in that index!')
+		return
+	else:
+		var slider
+		var arr = circle.get_children()
+		
+		for c in arr:
+			if c.type == 0:
+				slider = c
+				break
+		
+		slider.get_node('Inner/Circle').texture = load("res://art/%s.png" % shape)
+		slider.get_node('Inner/Circle').modulate = color
+		slider.get_node('Inner/Circle').scale = Vector2(size, size)
 
 
 func change_background_color(color):
