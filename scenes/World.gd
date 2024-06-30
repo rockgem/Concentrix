@@ -36,7 +36,7 @@ func _ready():
 	#add_station_to_circle(2, 1, 89.0, 300, 'circle')
 	#add_station_to_circle(3, 1, 89.0, 300, 'triangle', Color.RED)
 	
-	change_background_color(Color.DIM_GRAY)
+	change_background_color(Color.DARK_SLATE_GRAY)
 	
 	var count = 1
 	for circle in $Sort.get_children():
