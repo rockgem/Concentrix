@@ -1,9 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://xioa8mhmmr3e"]
+[gd_scene load_steps=5 format=3 uid="uid://xioa8mhmmr3e"]
 
 [ext_resource type="Script" path="res://actors/elements/Point.gd" id="1_yjnkl"]
-[ext_resource type="Texture2D" uid="uid://cixoodxtkg3jl" path="res://art/tri.png" id="2_05dci"]
+[ext_resource type="Texture2D" uid="uid://cynbonolh6jlt" path="res://art/circle_small.png" id="2_cion6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8550m"]
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_824ha"]
 
 [node name="Point" type="Node2D" groups=["Point"]]
 script = ExtResource("1_yjnkl")
@@ -17,7 +19,10 @@ shape = SubResource("CircleShape2D_8550m")
 
 [node name="Circle" type="Sprite2D" parent="Inner"]
 scale = Vector2(0.32, 0.32)
-texture = ExtResource("2_05dci")
+texture = ExtResource("2_cion6")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamGenerator_824ha")
 
 [connection signal="area_entered" from="Inner/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Inner/Area2D" to="." method="_on_area_2d_area_exited"]

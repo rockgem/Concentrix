@@ -15,7 +15,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.231373, 0.231373, 0.231373, 1)
+color = Color(0.411765, 0.411765, 0.411765, 1)
 
 [node name="PlaySounds" type="Button" parent="CanvasLayer"]
 anchors_preset = 7

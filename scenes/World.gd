@@ -31,11 +31,19 @@ func _ready():
 	distance_changed.connect(on_distance_changed)
 	
 	add_circles(circles_count)
-	add_station_to_circle(1, 1, 36.0, 'Beep2')
-	add_station_to_circle(1, 1, 240.0, 'Beep')
-	add_station_to_circle(2, 1, 89.0, 'Beep')
+	#add_station_to_circle(1, 1, 36.0, 655, 'square', Color.GREEN, .34)
+	#add_station_to_circle(1, 1, 240.0, 400, 'circle', Color.BLUE, .48)
+	#add_station_to_circle(2, 1, 89.0, 300, 'circle')
+	#add_station_to_circle(3, 1, 89.0, 300, 'triangle', Color.RED)
 	
-	change_background_color(Color.YELLOW_GREEN)
+	change_background_color(Color.DIM_GRAY)
+	
+	var count = 1
+	for circle in $Sort.get_children():
+		for i in 12:
+			add_station_to_circle(count, 1, i * PI / 6, 655, 'circle', Color.SKY_BLUE)
+		
+		count += 1
 
 
 func delete_all():
@@ -57,10 +65,11 @@ func add_circles(amount):
 		
 		var obj = load("res://actors/elements/Point.tscn").instantiate()
 		obj.type = 0
+		obj.z_index = 99
 		c.add_object(obj)
 
 
-func add_station_to_circle(idx, amount = 1, rot = 0.0, sound = 'Beep'):
+func add_station_to_circle(idx, amount = 1, rot = 0.0, sound_hz = 48.0, shape = 'circle', shape_color: Color = Color.WHITE, size = 0.32):
 	var circle = $Sort.get_child(idx - 1)
 	
 	if circle == null:
@@ -70,7 +79,10 @@ func add_station_to_circle(idx, amount = 1, rot = 0.0, sound = 'Beep'):
 		for i in amount:
 			var station = load("res://actors/elements/Point.tscn").instantiate()
 			station.type = 1
-			station.sound = sound
+			station.sound_hz = sound_hz
+			station.get_node('Inner/Circle').texture = load("res://art/%s.png" % shape)
+			station.get_node('Inner/Circle').modulate = shape_color
+			station.get_node('Inner/Circle').scale = Vector2(size, size)
 			
 			circle.add_object(station, rot)
 
