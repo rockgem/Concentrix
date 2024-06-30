@@ -8,11 +8,16 @@ enum TYPE{
 
 var type = TYPE.POINT
 var sound_hz = 100.0
+var sound_name = ''
 var default_size = 0.32
 
 var is_dragging = false
 
 
+
+func _ready():
+	if sound_name != '':
+		$PredefinedSound.stream = load("res://sounds/sfx/%s.wav" % sound_name)
 
 
 func _physics_process(delta):
@@ -33,19 +38,22 @@ func check_touching():
 
 func _on_area_2d_area_entered(area):
 	if type == TYPE.STATION:
-		var playback # Will hold the AudioStreamGeneratorPlayback.
-		var sample_hz = $AudioStreamPlayer.stream.mix_rate
-		
-		$AudioStreamPlayer.play()
-		playback = $AudioStreamPlayer.get_stream_playback()
-		
-		var phase = 0.0
-		var increment = sound_hz / sample_hz
-		var frames_available = playback.get_frames_available()
-		
-		for i in range(frames_available / 4):
-			playback.push_frame(Vector2.ONE * sin(phase * TAU))
-			phase = fmod(phase + increment, 1.0)
+		if sound_name != '':
+			$PredefinedSound.play()
+		else:
+			var playback # Will hold the AudioStreamGeneratorPlayback.
+			var sample_hz = $AudioStreamPlayer.stream.mix_rate
+			
+			$AudioStreamPlayer.play()
+			playback = $AudioStreamPlayer.get_stream_playback()
+			
+			var phase = 0.0
+			var increment = sound_hz / sample_hz
+			var frames_available = playback.get_frames_available()
+			
+			for i in range(frames_available / 4):
+				playback.push_frame(Vector2.ONE * sin(phase * TAU))
+				phase = fmod(phase + increment, 1.0)
 
 
 func _on_area_2d_area_exited(area):

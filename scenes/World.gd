@@ -41,13 +41,14 @@ func _ready():
 	var count = 1
 	for circle in $Sort.get_children():
 		for i in 12:
-			add_station_to_circle(count, 1, i * PI / 6, 655, 'circle', Color.SKY_BLUE)
+			#add_station_to_circle(count, 1, i * PI / 6, 655, 'circle', Color.SKY_BLUE)
+			add_station_to_circle(count, 1, i * PI / 6, 655, 'circle', Color.SKY_BLUE, .32, 'Beep%s_%s' % [count, i])
 		
 		count += 1
 	
 	
-	change_circle_slider(1, 'triangle')
-	change_circle_slider(2, 'circle_small', Color.BLUE_VIOLET)
+	#change_circle_slider(1, 'triangle')
+	#change_circle_slider(2, 'circle_small', Color.BLUE_VIOLET)
 
 
 func delete_all():
@@ -73,7 +74,7 @@ func add_circles(amount):
 		c.add_object(obj)
 
 
-func add_station_to_circle(idx, amount = 1, rot = 0.0, sound_hz = 48.0, shape = 'circle', shape_color: Color = Color.WHITE, size = 0.32):
+func add_station_to_circle(idx, amount = 1, rot = 0.0, sound_hz = 48.0, shape = 'circle', shape_color: Color = Color.WHITE, size = 0.32, sound_name: String = ''):
 	var circle = $Sort.get_child(idx - 1)
 	
 	if circle == null:
@@ -84,6 +85,7 @@ func add_station_to_circle(idx, amount = 1, rot = 0.0, sound_hz = 48.0, shape = 
 			var station = load("res://actors/elements/Point.tscn").instantiate()
 			station.type = 1
 			station.sound_hz = sound_hz
+			station.sound_name = sound_name
 			station.get_node('Inner/Circle').texture = load("res://art/%s.png" % shape)
 			station.get_node('Inner/Circle').modulate = shape_color
 			station.get_node('Inner/Circle').scale = Vector2(size, size)

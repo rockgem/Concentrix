@@ -1,38 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://6nv133wg2pg5"]
+[gd_scene load_steps=3 format=3 uid="uid://6nv133wg2pg5"]
 
 [ext_resource type="Script" path="res://sounds/sfx/SFX.gd" id="1_xhh6t"]
-[ext_resource type="AudioStream" uid="uid://b84ra1t0i1qxn" path="res://sounds/sfx/Beep1.wav" id="2_nb5q8"]
-[ext_resource type="AudioStream" uid="uid://bhtn2606w8l54" path="res://sounds/sfx/Beep2.wav" id="3_2a25x"]
-[ext_resource type="AudioStream" uid="uid://ctjx5hwf5c5l0" path="res://sounds/sfx/Beep3.wav" id="4_axv1d"]
-[ext_resource type="AudioStream" uid="uid://hvq2qdu5aqab" path="res://sounds/sfx/Beep4.wav" id="5_3b218"]
-[ext_resource type="AudioStream" uid="uid://b5g2ivux0bh8x" path="res://sounds/sfx/Beep5.wav" id="6_5e16f"]
-[ext_resource type="AudioStream" uid="uid://bkb73vlcv0jr4" path="res://sounds/sfx/Beep6.wav" id="7_twno6"]
-[ext_resource type="AudioStream" uid="uid://br2iuk2vjd4g5" path="res://sounds/sfx/Beep7.wav" id="8_74pt3"]
-[ext_resource type="AudioStream" uid="uid://dktw7q12ook33" path="res://sounds/sfx/Beep8.wav" id="9_8vtdk"]
+[ext_resource type="AudioStream" uid="uid://b84ra1t0i1qxn" path="res://sounds/sfx/Beep1_1.wav" id="2_nb5q8"]
 
 [node name="Sfx" type="Node"]
 script = ExtResource("1_xhh6t")
 
 [node name="Beep" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_nb5q8")
-
-[node name="Beep2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_2a25x")
-
-[node name="Beep3" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_axv1d")
-
-[node name="Beep4" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_3b218")
-
-[node name="Beep5" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_5e16f")
-
-[node name="Beep6" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_twno6")
-
-[node name="Beep7" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_74pt3")
-
-[node name="Beep8" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_8vtdk")
