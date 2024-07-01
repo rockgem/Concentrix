@@ -23,7 +23,7 @@ var distance = 60.0 :
 
 @onready var center = $Center
 
-
+var sustain_sounds = false
 
 func _ready():
 	circles_count_increased.connect(on_circles_count_increased)
@@ -163,3 +163,11 @@ func _on_show_axis_toggled(toggled_on):
 		var tl = get_tree().get_nodes_in_group('TriangleLine')
 		for t in tl:
 			t.queue_free()
+
+
+func _on_sustain_sounds_toggled(toggled_on):
+	sustain_sounds = toggled_on
+
+
+func _on_save_pressed():
+	pass # Replace with function body.

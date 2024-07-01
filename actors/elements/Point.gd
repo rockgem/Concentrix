@@ -13,16 +13,26 @@ var default_size = 0.32
 
 var is_dragging = false
 
-
+var world_ref = null
 
 func _ready():
 	if sound_name != '':
 		$PredefinedSound.stream = load("res://sounds/sfx/%s.wav" % sound_name)
+	
+	await get_tree().process_frame
+	
+	world_ref = get_tree().get_nodes_in_group('World')[0]
 
 
 func _physics_process(delta):
 	if is_dragging:
 		look_at(get_global_mouse_position())
+	
+	if world_ref:
+		if type == TYPE.STATION:
+			if $Inner/Area2D.has_overlapping_areas() and world_ref.sustain_sounds and $PredefinedSound.playing == false and $AudioStreamPlayer.playing == false:
+				print('play again')
+				_on_area_2d_area_entered(null)
 
 
 func _unhandled_input(event):
@@ -57,7 +67,7 @@ func _on_area_2d_area_entered(area):
 
 
 func _on_area_2d_area_exited(area):
-	pass # Replace with function body.
+	$PredefinedSound.stop()
 
 
 func _on_area_2d_input_event(viewport, event, shape_idx):

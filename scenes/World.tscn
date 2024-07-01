@@ -40,6 +40,25 @@ offset_bottom = 56.0
 focus_mode = 0
 text = "Show Axis"
 
+[node name="SustainSounds" type="CheckBox" parent="CanvasLayer"]
+offset_left = 31.0
+offset_top = 58.0
+offset_right = 170.0
+offset_bottom = 89.0
+focus_mode = 0
+text = "Sustain Sounds"
+
+[node name="Save" type="Button" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -125.0
+offset_top = 27.0
+offset_right = -33.0
+offset_bottom = 58.0
+grow_horizontal = 0
+text = "Save"
+
 [node name="Center" type="Node2D" parent="."]
 position = Vector2(575, 324)
 
@@ -47,3 +66,5 @@ position = Vector2(575, 324)
 
 [connection signal="pressed" from="CanvasLayer/PlaySounds" to="." method="_on_play_sounds_pressed"]
 [connection signal="toggled" from="CanvasLayer/ShowAxis" to="." method="_on_show_axis_toggled"]
+[connection signal="toggled" from="CanvasLayer/SustainSounds" to="." method="_on_sustain_sounds_toggled"]
+[connection signal="pressed" from="CanvasLayer/Save" to="." method="_on_save_pressed"]
