@@ -30,3 +30,21 @@ func _physics_process(delta):
 	
 	$Line3.points[0] = center.global_position
 	$Line3.points[1] = target.global_position
+
+
+func get_angle():
+	return center.global_position.angle_to(target.global_position)
+
+
+func get_length():
+	var length_x = snapped(Vector2(center.global_position.x, target.global_position.y).distance_to(target.global_position), 0.01)
+	var length_y = snapped(Vector2(target.global_position.x, center.global_position.y).distance_to(target.global_position), 0.01)
+	
+	return Vector2(length_x, length_y)
+
+
+
+
+
+
+

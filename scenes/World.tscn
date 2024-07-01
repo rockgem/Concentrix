@@ -64,6 +64,19 @@ layout_mode = 2
 focus_mode = 0
 text = "Sustain Sounds"
 
+[node name="Display" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="DisplayBox" type="HBoxContainer" parent="CanvasLayer/Display"]
+layout_mode = 0
+offset_left = 255.0
+offset_top = 19.0
+offset_right = 295.0
+offset_bottom = 59.0
+theme_override_constants/separation = 32
+
 [node name="Center" type="Node2D" parent="."]
 position = Vector2(575, 324)
 

@@ -119,6 +119,13 @@ func change_background_color(color):
 	$CanvasLayer/Background.color = color
 
 
+func generate_display(triangle_line):
+	var display = load("res://actors/CircleDataDisplay.tscn").instantiate()
+	display.triangle_line = triangle_line
+	
+	$CanvasLayer/Display/DisplayBox.add_child(display)
+
+
 func on_circles_count_increased():
 	add_circles(1)
 
@@ -152,6 +159,8 @@ func _on_show_axis_toggled(toggled_on):
 			tl.target = slider.get_node('Inner')
 			tl.center = center
 			add_child(tl)
+			
+			generate_display(tl)
 		
 	else:
 		var axis = get_tree().get_nodes_in_group('Axis')[0]
@@ -160,6 +169,9 @@ func _on_show_axis_toggled(toggled_on):
 		var tl = get_tree().get_nodes_in_group('TriangleLine')
 		for t in tl:
 			t.queue_free()
+		
+		for display in $CanvasLayer/Display/DisplayBox.get_children():
+			display.queue_free()
 
 
 func _on_sustain_sounds_toggled(toggled_on):

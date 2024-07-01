@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://yxqbfn2ly16l"]
+
+[ext_resource type="Script" path="res://actors/CircleDataDisplay.gd" id="1_5fk81"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mftin"]
+line_spacing = 0.0
+font_size = 10
+
+[node name="CircleDataDisplay" type="Label"]
+text = "Circle 1:
+X Length: 0.0
+Y Length: 0.0
+Angle: 0.0"
+label_settings = SubResource("LabelSettings_mftin")
+script = ExtResource("1_5fk81")
