@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdn6b26j0f6f1"]
+
+[ext_resource type="Script" path="res://actors/elements/MonoLine.gd" id="1_yis3r"]
+[ext_resource type="Texture2D" uid="uid://ca5tjuw8ljuiu" path="res://art/line.png" id="2_4qv52"]
+
+[node name="MonoLine" type="Node2D" groups=["MonoLine"]]
+script = ExtResource("1_yis3r")
+
+[node name="Line2D" type="Line2D" parent="."]
+texture_repeat = 2
+texture = ExtResource("2_4qv52")
+texture_mode = 1

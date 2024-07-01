@@ -28,3 +28,14 @@ func create_save():
 	f.store_string(JSON.stringify(file))
 	
 	f.close()
+
+
+
+func get_sliders():
+	var sliders = []
+	
+	for p in get_tree().get_nodes_in_group('Point'):
+		if p.type == 0:
+			sliders.append(p)
+	
+	return sliders

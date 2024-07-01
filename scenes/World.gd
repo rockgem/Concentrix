@@ -73,8 +73,7 @@ func add_circles(amount):
 		var obj = load("res://actors/elements/Point.tscn").instantiate()
 		obj.type = 0
 		obj.z_index = 99
-		var deg = deg_to_rad(-180)
-		c.add_object(obj, deg)
+		c.add_object(obj)
 
 
 func add_station_to_circle(idx, amount = 1, rot = 0.0, sound_hz = 48.0, shape = 'circle', shape_color: Color = Color.WHITE, size = 0.32, sound_name: String = ''):
@@ -148,12 +147,7 @@ func _on_show_axis_toggled(toggled_on):
 		axis.position = center.position
 		add_child(axis)
 		
-		var sliders = []
-		for point in get_tree().get_nodes_in_group('Point'):
-			if point.type == 0:
-				sliders.append(point)
-		
-		for slider in sliders:
+		for slider in ManagerGame.get_sliders():
 			var tl = load("res://actors/elements/TriangleLine.tscn").instantiate()
 			tl.target = slider.get_node('Inner')
 			tl.center = center
@@ -174,3 +168,21 @@ func _on_sustain_sounds_toggled(toggled_on):
 
 func _on_save_pressed():
 	pass # Replace with function body.
+
+
+func _on_show_cons_toggled(toggled_on):
+	if toggled_on:
+		var sliders = ManagerGame.get_sliders()
+		
+		var count = 0
+		for slider in sliders.size() - 1:
+			var line = load("res://actors/elements/MonoLine.tscn").instantiate()
+			line.target = sliders[count + 1].get_node('Inner')
+			line.center = sliders[count].get_node('Inner')
+			add_child(line)
+			
+			count += 1
+	else:
+		var mono = get_tree().get_nodes_in_group('MonoLine')
+		for t in mono:
+			t.queue_free()
