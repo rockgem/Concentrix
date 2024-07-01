@@ -44,7 +44,7 @@ func _ready():
 	for circle in $Sort.get_children():
 		for i in 12:
 			#add_station_to_circle(count, 1, i * PI / 6, 655, 'circle', Color.SKY_BLUE)
-			add_station_to_circle(count, 1, i * PI / 6, 655, 'circle', Color.SKY_BLUE, .32, 'Beep%s_%s' % [count, i])
+			add_station_to_circle(count, 1, -i * PI / 6, 655, 'circle', Color.SKY_BLUE, .32, 'Beep%s_%s' % [count, i])
 		
 		count += 1
 	
