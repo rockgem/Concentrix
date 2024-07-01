@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://byjmb8uunujm7"]
+
+[ext_resource type="Script" path="res://actors/elements/TriangleLine.gd" id="1_3pwih"]
+[ext_resource type="Texture2D" uid="uid://ca5tjuw8ljuiu" path="res://art/line.png" id="2_2axj6"]
+
+[node name="TriangleLine" type="Node2D" groups=["TriangleLine"]]
+script = ExtResource("1_3pwih")
+
+[node name="Line1" type="Line2D" parent="."]
+texture_repeat = 2
+texture = ExtResource("2_2axj6")
+texture_mode = 1
+
+[node name="Line2" type="Line2D" parent="."]
+texture_repeat = 2
+texture = ExtResource("2_2axj6")
+texture_mode = 1

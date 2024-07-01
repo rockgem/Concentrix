@@ -21,7 +21,7 @@ var distance = 60.0 :
 		
 		distance_changed.emit()
 
-
+@onready var center = $Center
 
 
 
@@ -36,7 +36,7 @@ func _ready():
 	#add_station_to_circle(2, 1, 89.0, 300, 'circle')
 	#add_station_to_circle(3, 1, 89.0, 300, 'triangle', Color.RED)
 	
-	change_background_color(Color.DARK_SLATE_GRAY)
+	change_background_color(Color.BLACK)
 	
 	var count = 1
 	for circle in $Sort.get_children():
@@ -62,7 +62,7 @@ func add_circles(amount):
 	for i in range(amount):
 		var c = load("res://actors/Circle.tscn").instantiate()
 		c.length += d
-		c.position = $Center.global_position
+		c.position = center.position
 		
 		$Sort.add_child(c)
 		
@@ -137,3 +137,29 @@ func _on_play_sounds_pressed():
 	
 	for s in sliders:
 		s.check_touching()
+
+
+func _on_show_axis_toggled(toggled_on):
+	if toggled_on:
+		var axis = load("res://actors/elements/Axis.tscn").instantiate()
+		axis.position = center.position
+		add_child(axis)
+		
+		var sliders = []
+		for point in get_tree().get_nodes_in_group('Point'):
+			if point.type == 0:
+				sliders.append(point)
+		
+		for slider in sliders:
+			var tl = load("res://actors/elements/TriangleLine.tscn").instantiate()
+			tl.target = slider.get_node('Inner')
+			tl.center = center
+			add_child(tl)
+		
+	else:
+		var axis = get_tree().get_nodes_in_group('Axis')[0]
+		axis.queue_free()
+		
+		var tl = get_tree().get_nodes_in_group('TriangleLine')
+		for t in tl:
+			t.queue_free()

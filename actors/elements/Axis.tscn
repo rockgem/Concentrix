@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnwqm1wtrs5t3"]
+
+[ext_resource type="Script" path="res://actors/elements/Axis.gd" id="1_ge32s"]
+
+[node name="Axis" type="Node2D" groups=["Axis"]]
+z_index = -90
+script = ExtResource("1_ge32s")
