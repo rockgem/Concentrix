@@ -25,8 +25,7 @@ texture_mode = 1
 [node name="Line3" type="Line2D" parent="."]
 modulate = Color(0.909804, 0.160784, 0.247059, 1)
 texture_repeat = 2
-texture = ExtResource("2_2axj6")
-texture_mode = 1
+width = 2.0
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
