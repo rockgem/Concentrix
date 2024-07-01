@@ -7,11 +7,13 @@
 script = ExtResource("1_3pwih")
 
 [node name="Line1" type="Line2D" parent="."]
+modulate = Color(0.192157, 0.45098, 0.854902, 1)
 texture_repeat = 2
 texture = ExtResource("2_2axj6")
 texture_mode = 1
 
 [node name="Line2" type="Line2D" parent="."]
+modulate = Color(0.345098, 0.713726, 0.278431, 1)
 texture_repeat = 2
 texture = ExtResource("2_2axj6")
 texture_mode = 1
