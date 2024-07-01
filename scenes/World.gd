@@ -26,6 +26,8 @@ var distance = 60.0 :
 var sustain_sounds = false
 
 func _ready():
+	ManagerGame.world_ref = self
+	
 	circles_count_increased.connect(on_circles_count_increased)
 	circles_count_decreased.connect(on_circles_count_decreased)
 	distance_changed.connect(on_distance_changed)
@@ -71,7 +73,8 @@ func add_circles(amount):
 		var obj = load("res://actors/elements/Point.tscn").instantiate()
 		obj.type = 0
 		obj.z_index = 99
-		c.add_object(obj)
+		var deg = deg_to_rad(-180)
+		c.add_object(obj, deg)
 
 
 func add_station_to_circle(idx, amount = 1, rot = 0.0, sound_hz = 48.0, shape = 'circle', shape_color: Color = Color.WHITE, size = 0.32, sound_name: String = ''):
