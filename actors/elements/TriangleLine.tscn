@@ -1,11 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://byjmb8uunujm7"]
+[gd_scene load_steps=3 format=3 uid="uid://byjmb8uunujm7"]
 
 [ext_resource type="Script" path="res://actors/elements/TriangleLine.gd" id="1_3pwih"]
 [ext_resource type="Texture2D" uid="uid://ca5tjuw8ljuiu" path="res://art/line.png" id="2_2axj6"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_by1tf"]
-line_spacing = 0.0
-font_size = 10
 
 [node name="TriangleLine" type="Node2D" groups=["TriangleLine"]]
 script = ExtResource("1_3pwih")
@@ -26,10 +22,3 @@ texture_mode = 1
 modulate = Color(0.909804, 0.160784, 0.247059, 1)
 texture_repeat = 2
 width = 2.0
-
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "X: 99.00
-Y: 99.00"
-label_settings = SubResource("LabelSettings_by1tf")

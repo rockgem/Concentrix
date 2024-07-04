@@ -38,7 +38,7 @@ func _ready():
 	#add_station_to_circle(2, 1, 89.0, 300, 'circle')
 	#add_station_to_circle(3, 1, 89.0, 300, 'triangle', Color.RED)
 	
-	change_background_color(Color.BLACK)
+	change_background_color(Color.DARK_SLATE_GRAY)
 	
 	var count = 1
 	for circle in $Sort.get_children():
@@ -179,7 +179,7 @@ func _on_sustain_sounds_toggled(toggled_on):
 
 
 func _on_save_pressed():
-	pass # Replace with function body.
+	ManagerGame.create_save()
 
 
 func _on_show_cons_toggled(toggled_on):
